@@ -1,10 +1,13 @@
-package dao;
+package service;
 
 import java.util.List;
 
+import dao.UserDao;
 import model.User;
 
-public interface UserDao {
+public interface UserService {
+
+	void setUserDao(UserDao userDao);
 
 	Integer addUser(User user);
 
@@ -16,6 +19,6 @@ public interface UserDao {
 
 	List<User> getAllUsers();
 
-	List<User> getUserByUsername(String name);
+	List<User> getUserByName(String name);
 
 }
