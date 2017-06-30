@@ -41,12 +41,12 @@
         <h1 class="text-muted">LZTR 问卷网 </h1>
         <nav>
           <ul class="nav nav-justified">
-            <li class="active"><a href="#">首页</a></li>
-            <li><a href="#">个人信息</a></li>
-            <li><a href="#">我的问卷</a></li>
-            <li><a href="#">问卷发布</a></li>
-            <li><a href="#">填写问卷</a></li>
-            <li><a href="#">帮助</a></li>
+            <li><a href="user_frontPage.jsp">			首页</a></li>
+            <li><a href="user_selfInfo.jsp">			个人信息	</a></li>
+            <li><a href="user_myQuestionnaire.jsp">		我的问卷	</a></li>
+            <li><a href="user_releaseQuestionnaire.jsp">问卷发布	</a></li>
+            <li><a href="user_fillQuestionnaire.jsp">	填写问卷	</a></li>
+            <li class="active"><a href="">帮助</a></li>
           </ul>
         </nav>
       </div>
@@ -61,7 +61,7 @@
 	  <div class="jumbotron">
           <h1>时下热门</h1>
 	  </div>
-	  <!-- 此次代码需要修改，到时候项目基本完成后，需要修改为动态变化的（显示数据库中填写次数最多的前三个仍然开放的问卷） -->
+	  <!-- 此处代码需要修改，到时候项目基本完成后，需要修改为动态变化的（显示数据库中填写次数最多的前三个仍然开放的问卷） -->
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-lg-4">
