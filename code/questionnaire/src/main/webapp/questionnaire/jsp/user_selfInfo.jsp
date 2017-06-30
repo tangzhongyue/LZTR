@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ page import="model.User" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -30,6 +31,10 @@
       <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+<% 
+User user = session.getAttribute("user");
+%>
+
 
   <body>
 
