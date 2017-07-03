@@ -6,6 +6,10 @@ import model.User;
 import service.UserService;
 
 public class UserActions extends BaseAction{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private String username;
 	private String password;
@@ -124,10 +128,16 @@ public class UserActions extends BaseAction{
 	}
 	
 	public String add() throws Exception {
-		User user = new User(id, username, password, age, sex, email, country,
+		if(userService.getUserByName(username)!=null){
+			response().getWriter().print("itdepends");
+			return null;
+		}
+		if(role==null) role = "user";
+		User user = new User(username, password, age, sex, email, country,
 				city, mobile, qq, wechat, role);
 		userService.addUser(user);
-		return "addUser";
+		response().getWriter().print("success");
+		return null;
 	}
 	
 	public String update() throws Exception {

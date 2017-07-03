@@ -32,7 +32,7 @@
     <![endif]-->
   </head>
 <% 
-User user = session.getAttribute("user");
+User user = (User) session.getAttribute("user");
 %>
 
 
