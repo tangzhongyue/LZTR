@@ -29,6 +29,11 @@
 			<result>/questionnaire/jsp/signup.jsp</result>
 		</action>
 		
+		<!-- 跳转地址待修改 -->
+		<action name="Search" class="action.QuesSearchAction">
+			<result name="success">/questionnaire/jsp/user_frontPage.jsp</result>
+		</action>
+		
 		<action name="*">
 			<result>/{1}.jsp</result>
 		</action>

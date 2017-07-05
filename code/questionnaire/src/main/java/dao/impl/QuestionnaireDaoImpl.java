@@ -55,5 +55,15 @@ public class QuestionnaireDaoImpl extends HibernateDaoSupport implements Questio
 				.find("from Questionnaire");
 		return quess;
 	}
+	
+	/* (non-Javadoc)
+	 * @see dao.impl.QuestionnaireDao#findQuestionnaires(String condi)
+	 */
+	public List<Questionnaire> findQuestionnaires(String condi){
+		@SuppressWarnings("unchecked")
+		List<Questionnaire> quess  = (List<Questionnaire>) getHibernateTemplate()
+				.find("from Questionnaire as q where q.title LIKE ?",'%'+condi+'%');
+		return quess;
+	}
 
 }

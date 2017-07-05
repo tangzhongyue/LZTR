@@ -92,6 +92,7 @@ public class QuestionnaireActions extends BaseAction{
 		return SUCCESS;
 	}
 	
+	/* used by admin only for changing status */
 	public String updateStatus() throws Exception {
 		Questionnaire ques = quesService.getQuestionnaireById(id);
 		ques.setStatus(status);

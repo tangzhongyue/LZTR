@@ -15,5 +15,7 @@ public interface QuestionnaireDao {
 	Questionnaire getQuestionnaireById(int id);
 
 	List<Questionnaire> getAllQuestionnaires();
-
+	
+	List<Questionnaire> findQuestionnaires(String condi);
+ 
 }

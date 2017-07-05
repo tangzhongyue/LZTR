@@ -170,7 +170,7 @@
 	<script src="<%=path%>/questionnaire/js/bootbox.min.js"></script>
 	<script src="<%=path%>/questionnaire/js/questionnaire.js"></script>
 
-	<script src="<%=path%>/questionnaire/js/ques.js"></script>
+	<script src="<%=path%>/questionnaire/js/admin_ques.js"></script>
 
 	<script>
 		$(document).ready(function() {

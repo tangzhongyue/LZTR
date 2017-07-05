@@ -52,4 +52,12 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
 	public List<Questionnaire> getAllQuestionnaires() {
 		return questionnaireDao.getAllQuestionnaires();
 	}
+	
+	/* (non-Javadoc)
+	 * @see service.impl.QuestionnaireService#findQuestionnaires(Sting condi)
+	 */
+	@Override
+	public List<Questionnaire> findQuestionnaires(String condi){
+		return questionnaireDao.findQuestionnaires(condi);
+	}
 }

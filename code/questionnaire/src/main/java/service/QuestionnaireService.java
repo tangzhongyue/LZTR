@@ -17,4 +17,5 @@ public interface QuestionnaireService {
 
 	List<Questionnaire> getAllQuestionnaires();
 
+	List<Questionnaire> findQuestionnaires(String condi);
 }
