@@ -7,8 +7,6 @@ import model.Questionnaire;
 
 public interface QuestionnaireService {
 
-	void setQuestionnaireDao(QuestionnaireDao quesDao);
-
 	Integer addQuestionnaire(Questionnaire ques);
 
 	void deleteQuestionnaire(Questionnaire ques);

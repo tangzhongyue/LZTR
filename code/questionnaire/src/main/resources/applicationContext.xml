@@ -72,7 +72,7 @@
 	<bean id="userDao" class="dao.impl.UserDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean id="quesDao" class="dao.impl.QuestionnaireDaoImpl">
+	<bean id="questionnaireDao" class="dao.impl.QuestionnaireDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
@@ -82,9 +82,9 @@
 		<!-- DAO -->
 		<property name="userDao" ref="userDao"></property>
 	</bean>
-	<bean id="quesService" class="service.impl.QuestionnaireServiceImpl">
+	<bean id="questionnaireService" class="service.impl.QuestionnaireServiceImpl">
 		<!-- DAO -->
-		<property name="quesDao" ref="quesDao"></property>
+		<property name="questionnaireDao" ref="questionnaireDao"></property>
 	</bean>
 
 	<!-- HibernateTransactionManager -->

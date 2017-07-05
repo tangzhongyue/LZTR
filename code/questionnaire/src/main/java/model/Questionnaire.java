@@ -15,8 +15,7 @@ public class Questionnaire{
 		
 	}
 	
-	public Questionnaire(int id, int userid, String title, String status, int isPublic, Date releaseTime, Date endTime){
-		this.id = id;
+	public Questionnaire(int userid, String title, String status, int isPublic, Date releaseTime, Date endTime){
 		this.userid = userid;
 		this.title = title;
 		this.status = status;

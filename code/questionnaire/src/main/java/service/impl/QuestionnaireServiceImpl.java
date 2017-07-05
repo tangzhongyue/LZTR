@@ -8,14 +8,9 @@ import service.QuestionnaireService;
 
 public class QuestionnaireServiceImpl implements QuestionnaireService {
 	
-	private QuestionnaireDao quesDao;
-	
-	/* (non-Javadoc)
-	 * @see service.impl.QuestionnaireService#setQuestionnaireDao(dao.QuestionnaireDao)
-	 */
-	@Override
+	private QuestionnaireDao questionnaireDao;
 	public void setQuestionnaireDao(QuestionnaireDao quesDao) {
-		this.quesDao = quesDao;
+		this.questionnaireDao = quesDao;
 	}
 	
 	/* (non-Javadoc)
@@ -23,7 +18,7 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
 	 */
 	@Override
 	public Integer addQuestionnaire(Questionnaire ques) {
-		return quesDao.addQuestionnaire(ques);
+		return questionnaireDao.addQuestionnaire(ques);
 	}
 
 	/* (non-Javadoc)
@@ -31,7 +26,7 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
 	 */
 	@Override
 	public void deleteQuestionnaire(Questionnaire ques) {
-		quesDao.deleteQuestionnaire(ques);
+		questionnaireDao.deleteQuestionnaire(ques);
 	}
 
 	/* (non-Javadoc)
@@ -39,7 +34,7 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
 	 */
 	@Override
 	public void updateQuestionnaire(Questionnaire ques) {
-		quesDao.updateQuestionnaire(ques);
+		questionnaireDao.updateQuestionnaire(ques);
 	}
 
 	/* (non-Javadoc)
@@ -47,7 +42,7 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
 	 */
 	@Override
 	public Questionnaire getQuestionnaireById(int id) {
-		return quesDao.getQuestionnaireById(id);
+		return questionnaireDao.getQuestionnaireById(id);
 	}
 
 	/* (non-Javadoc)
@@ -55,6 +50,6 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
 	 */
 	@Override
 	public List<Questionnaire> getAllQuestionnaires() {
-		return quesDao.getAllQuestionnaires();
+		return questionnaireDao.getAllQuestionnaires();
 	}
 }

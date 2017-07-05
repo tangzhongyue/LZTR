@@ -9,6 +9,10 @@
 	<package name="process" extends="struts-default">
 	<!-- User -->
 		<action name="*User" class="action.UserActions" method="{1}">
+		</action>
+		
+		<action name="*Questionnaire" class="action.QuestionnaireActions" method="{1}">
+			<result name="success">/questionnaire/jsp/admin_ques.jsp</result>
 		</action> 
 
 		<action name="loginPage">
