@@ -22,9 +22,15 @@
 			<result>/questionnaire/jsp/signup.jsp</result>
 		</action>
 		<action name="loginPro" class="action.LoginAction" method="login">
-			<result name="success">/questionnaire/jsp/user_frontPage.jsp</result>
+			<result name="user">/questionnaire/jsp/user_frontPage.jsp</result>
+			<result name="admin">/questionnaire/jsp/admin_ques.jsp</result>
 			<result name="input">/questionnaire/jsp/login.jsp</result>
 		</action>
+		
+		<action name="logoutPro" class="action.LoginAction" method="logout">
+			<result name="success">/questionnaire/jsp/login.jsp</result>
+		</action>
+		
 		<action name="signupPro" class="action.UserActions" method="add">
 			<result>/questionnaire/jsp/signup.jsp</result>
 		</action>
