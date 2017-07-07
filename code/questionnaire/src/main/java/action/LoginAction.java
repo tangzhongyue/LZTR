@@ -32,11 +32,9 @@ public class LoginAction extends BaseAction{
 		User user = loginService.login(username,  password);
 		if(user != null) {
 			session().setAttribute("user", user);
+			session().setAttribute("role", user.getRole());
 			System.out.println(username);
-			if (user.getRole().equals("admin")){
-				return "admin";
-			}
-			return "user";
+			return SUCCESS;
 		}
 		else{
 			System.out.println("wwrong");

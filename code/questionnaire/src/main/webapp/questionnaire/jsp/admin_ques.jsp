@@ -40,6 +40,8 @@
 							用户管理</a></li>
 					<li><a href="allQuestionnaire" class="active"><i
 							class="fa fa-book fa-fw"></i> 问卷管理</a></li>
+					<li><a href="FrontPage"><i
+							class="fa fa-university fa-fw"></i>问卷网首页</a></li>
 					<li><a href="logoutPro"><i 
 							class="fa fa-power-off fa-fw"></i> 登出</a></li>
 				</ul>

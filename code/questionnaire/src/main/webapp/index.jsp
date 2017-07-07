@@ -1,15 +1,8 @@
 <html>
 <body>
-<h2>Hello World!</h2>
-<%@ page import="model.User"%>
+<head>External Jump Page</head>
 <%
-	User user = (User)session.getAttribute("user");
-	if(user.getRole().equals("admin")){
-		response.sendRedirect("allQuestionnaire");
-	}
-	else{
-		response.sendRedirect("loginPage");
-	}
+response.sendRedirect("loginPage");
 %>
 </body>
 </html>

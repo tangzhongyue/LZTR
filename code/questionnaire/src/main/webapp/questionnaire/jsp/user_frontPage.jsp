@@ -45,11 +45,15 @@
         <nav>
           <ul class="nav nav-justified">
             <li class="active"><a href="">首页</a></li>
-            <li><a href="<%=path %>/questionnaire/jsp/user_selfInfo.jsp">			个人信息	</a></li>
-            <li><a href="<%=path %>/questionnaire/jsp/user_myQuestionnaire.jsp">		我的问卷	</a></li>
-            <li><a href="<%=path %>/questionnaire/jsp/user_releaseQuestionnaire.jsp">问卷发布	</a></li>
-            <li><a href="<%=path %>/questionnaire/jsp/user_fillQuestionnaire.jsp">	填写问卷	</a></li>
-            <li><a href="<%=path %>/questionnaire/jsp/user_helpContact.jsp">			帮助		</a></li>
+            <li><a href="<%=path %>/SelfInfo">个人信息</a></li>
+            <li><a href="<%=path %>/MyQuestionnaire">我的问卷</a></li>
+            <li><a href="<%=path %>/ReleaseQuestionnaire">问卷发布</a></li>
+            <li><a href="<%=path %>/FillQuestionnaire">填写问卷</a></li>
+            <li><a href="<%=path %>/HelpContact">帮助</a></li>
+            <li><a href="<%=path %>/logoutPro">登出</a></li>
+            <%if(((String)session.getAttribute("role")).equals("admin")){%>
+				<li><a href="<%=path %>/allQuestionnaire" ><i class="fa fa-table fa-fw"></i>系统信息管理</a></li>
+			<%}%>
           </ul>
         </nav>
       </div>

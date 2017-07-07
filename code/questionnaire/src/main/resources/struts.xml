@@ -21,9 +21,29 @@
 		<action name="signupPage">
 			<result>/questionnaire/jsp/signup.jsp</result>
 		</action>
+		
+		<action name="FillQuestionnaire">
+			<result>/questionnaire/jsp/user_fillQuestionnaire.jsp</result>
+		</action>
+		<action name="FrontPage">
+			<result>/questionnaire/jsp/user_frontPage.jsp</result>
+		</action>
+		<action name="HelpContact">
+			<result>/questionnaire/jsp/user_helpContact.jsp</result>
+		</action>
+		<action name="MyQuestionnaire">
+			<result>/questionnaire/jsp/user_myQuestionnaire.jsp</result>
+		</action>
+		<action name="ReleaseQuestionnaire">
+			<result>/questionnaire/jsp/user_releaseQuestionnaire.jsp</result>
+		</action>
+		<action name="SelfInfo">
+			<result>/questionnaire/jsp/user_selfInfo.jsp</result>
+		</action>
+		
+		
 		<action name="loginPro" class="action.LoginAction" method="login">
-			<result name="user">/questionnaire/jsp/user_frontPage.jsp</result>
-			<result name="admin">/questionnaire/jsp/admin_ques.jsp</result>
+			<result name="success">/questionnaire/jsp/user_frontPage.jsp</result>
 			<result name="input">/questionnaire/jsp/login.jsp</result>
 		</action>
 		
