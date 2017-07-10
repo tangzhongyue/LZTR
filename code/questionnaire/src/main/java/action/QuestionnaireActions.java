@@ -18,6 +18,7 @@ public class QuestionnaireActions extends BaseAction{
 	private int isPublic;
 	private Date releaseTime;
 	private Date endTime;
+	private String condi;
 	private QuestionnaireService quesService;
 
 	public int getId(){
@@ -68,6 +69,13 @@ public class QuestionnaireActions extends BaseAction{
 	public void setEndTime(Date endTime){
 		this.endTime = endTime;
 	}
+	
+	public void setCondi(String condi){
+		this.condi = condi;
+	}
+	public String getCondi(){
+		return this.condi;
+	}
 
 	public void setQuestionnaireService(QuestionnaireService quesService) {
 		this.quesService = quesService;
@@ -77,7 +85,7 @@ public class QuestionnaireActions extends BaseAction{
 		if(status==null) status = "unp";
 		Questionnaire ques = new Questionnaire(userid,title,status,isPublic,releaseTime,endTime);
 		quesService.addQuestionnaire(ques);
-		return SUCCESS;
+		return "add";
 	}
 	 
 	/* id and userid can not be changed */
@@ -89,7 +97,7 @@ public class QuestionnaireActions extends BaseAction{
 		ques.setStatus(status);
 		ques.setTitle(title);
 		quesService.updateQuestionnaire(ques);
-		return SUCCESS;
+		return "update";
 	}
 	
 	/* used by admin only for changing status */
@@ -97,18 +105,30 @@ public class QuestionnaireActions extends BaseAction{
 		Questionnaire ques = quesService.getQuestionnaireById(id);
 		ques.setStatus(status);
 		quesService.updateQuestionnaire(ques);
-		return SUCCESS;
+		return "updateStatus";
 	}
 	
 	public String delete() throws Exception {
 		Questionnaire ques = quesService.getQuestionnaireById(id);
 		quesService.deleteQuestionnaire(ques);
-		return SUCCESS;
+		return "delete";
 	}
 	
 	public String all() throws Exception {
 		List<Questionnaire> Questionnaires = quesService.getAllQuestionnaires();
 		request().setAttribute("Questionnaires", Questionnaires);
-		return SUCCESS;
+		return "all";
+	}
+	
+	public String search() throws Exception{
+		List<Questionnaire> Questionnaires = quesService.findQuestionnaires(condi);
+		request().setAttribute("ResultList", Questionnaires);
+		return "search";
+	}
+	
+	public String my() throws Exception{
+		List<Questionnaire> Questionnaires = quesService.getQuestionnaireByUserId(userid);
+		request().setAttribute("MyQuess", Questionnaires);
+		return "my";
 	}
 }

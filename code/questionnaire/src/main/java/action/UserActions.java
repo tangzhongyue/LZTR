@@ -25,6 +25,8 @@ public class UserActions extends BaseAction{
 	private String job;
 	private String role; //admin or user(it means common user)
 	
+	private String condi;//for search
+	
 	private UserService userService;
 
 	public int getId() {
@@ -130,6 +132,13 @@ public class UserActions extends BaseAction{
 	public void setJob(String job) {
 		this.job = job;
 	}
+	
+	public void setCondi(String condi){
+		this.condi = condi;
+	}
+	public String getCondi(){
+		return this.condi;
+	}
 
 	public void setUserService(UserService userService) {
 		this.userService = userService;
@@ -138,14 +147,14 @@ public class UserActions extends BaseAction{
 	public String add() throws Exception {
 		if(userService.getUserByName(username)!=null){
 			response().getWriter().print("itdepends");
-			return null;
+			return "add";
 		}
 		if(role==null) role = "user";
 		User user = new User(username, password, age, sex, email, country,
 				city, mobile, qq, wechat, role, job);
 		userService.addUser(user);
 		response().getWriter().print("success");
-		return SUCCESS;
+		return "add";
 	}
 	
 	public String update() throws Exception {
@@ -162,19 +171,25 @@ public class UserActions extends BaseAction{
 		user.setWechat(wechat);
 		user.setJob(job);
 		userService.updateUser(user);
-		return SUCCESS;
+		return "update";
 	}
 	
 	public String delete() throws Exception {
 		User user = userService.getUserById(id);
 		userService.deleteUser(user);
-		return SUCCESS;
+		return "delete";
 	}
 	
 	public String all() throws Exception {
 		List<User> users = userService.getAllUsers();
 		request().setAttribute("Users", users);
-		return SUCCESS;
+		return "all";
+	}
+	
+	public String search() throws Exception{
+		List<User> Users = userService.findUsers(condi);
+		request().setAttribute("ResultList", Users);
+		return "search";
 	}
 
 }

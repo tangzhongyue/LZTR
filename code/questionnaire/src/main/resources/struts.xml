@@ -7,22 +7,34 @@
 	<constant name="struts.i18n.encoding" value="utf-8" />
 	<constant name="struts.devMode" value="true" />
 	<package name="process" extends="struts-default">
-	<!-- User -->
+		
+		<!-- User -->
+		<!-- update, add, ,search, delete, all -->
+		<!-- 没有区分result的跳转，在页面基本完成后修改 -->
 		<action name="*User" class="action.UserActions" method="{1}">
-			<result name="success">/questionnaire/jsp/admin_user.jsp</result>
+			<result name="update">/questionnaire/jsp/admin_user.jsp</result>
+			<result name="add">/questionnaire/jsp/admin_user.jsp</result>
+			<result name="search">/questionnaire/jsp/admin_user.jsp</result>
+			<result name="delete">/questionnaire/jsp/admin_user.jsp</result>
+			<result name="all">/questionnaire/jsp/admin_user.jsp</result>
 		</action>
 		
+		<!-- Questionnaire -->
+		<!-- update, add, updateStatus, search, delete, all, my-->
+		<!-- 没有区分result的跳转，在页面基本完成后修改 -->
 		<action name="*Questionnaire" class="action.QuestionnaireActions" method="{1}">
-			<result name="success">/questionnaire/jsp/admin_ques.jsp</result>
+			<result name="update">/questionnaire/jsp/admin_ques.jsp</result>
+			<result name="add">/questionnaire/jsp/admin_ques.jsp</result>
+			<result name="updateStatus">/questionnaire/jsp/admin_ques.jsp</result>
+			<result name="search">/questionnaire/jsp/admin_ques.jsp</result>
+			<result name="delete">/questionnaire/jsp/admin_ques.jsp</result>
+			<result name="all">/questionnaire/jsp/admin_ques.jsp</result>
+			<result name="my">/questionnaire/jsp/admin_ques.jsp</result>
 		</action> 
 
-		<action name="loginPage">
-			<result>/questionnaire/jsp/login.jsp</result>
-		</action>
-		<action name="signupPage">
-			<result>/questionnaire/jsp/signup.jsp</result>
-		</action>
-		
+		<!-- Jump -->
+		<!-- 下面部分为简单的跳转 -->
+		<!-- 完成user部分页面后修改 -->
 		<action name="FillQuestionnaire">
 			<result>/questionnaire/jsp/user_fillQuestionnaire.jsp</result>
 		</action>
@@ -41,8 +53,14 @@
 		<action name="SelfInfo">
 			<result>/questionnaire/jsp/user_selfInfo.jsp</result>
 		</action>
+		<action name="loginPage">
+			<result>/questionnaire/jsp/login.jsp</result>
+		</action>
+		<action name="signupPage">
+			<result>/questionnaire/jsp/signup.jsp</result>
+		</action>
 		
-		
+		<!-- Login & Logout -->
 		<action name="loginPro" class="action.LoginAction" method="login">
 			<result name="success">/questionnaire/jsp/user_frontPage.jsp</result>
 			<result name="input">/questionnaire/jsp/login.jsp</result>
@@ -54,11 +72,6 @@
 		
 		<action name="signupPro" class="action.UserActions" method="add">
 			<result>/questionnaire/jsp/signup.jsp</result>
-		</action>
-		
-		<!-- 跳转地址待修改 -->
-		<action name="Search" class="action.QuesSearchAction">
-			<result name="success">/questionnaire/jsp/user_frontPage.jsp</result>
 		</action>
 		
 		<action name="*">

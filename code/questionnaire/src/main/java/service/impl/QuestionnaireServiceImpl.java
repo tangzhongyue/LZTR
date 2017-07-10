@@ -60,4 +60,11 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
 	public List<Questionnaire> findQuestionnaires(String condi){
 		return questionnaireDao.findQuestionnaires(condi);
 	}
+	
+	/* (non-Javadoc)
+	 * @see service.impl.QuestionnaireService#getQuestionnaireByUserId(int id)
+	 */
+	public List<Questionnaire> getQuestionnaireByUserId(int id){
+		return questionnaireDao.getQuestionnaireByUserId(id);
+	}
 }

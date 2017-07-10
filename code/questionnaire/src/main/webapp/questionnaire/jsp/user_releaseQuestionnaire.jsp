@@ -52,7 +52,7 @@
             <li><a href="<%=path %>/HelpContact">帮助</a></li>
             <li><a href="<%=path %>/logoutPro">登出</a></li>
             <%if(((String)session.getAttribute("role")).equals("admin")){%>
-				<li><a href="<%=path %>/allQuestionnaire" ><i class="fa fa-table fa-fw"></i>系统信息管理</a></li>
+				<li><a href="<%=path %>/allUser" ><i class="fa fa-table fa-fw"></i>系统信息管理</a></li>
 			<%}%>
           </ul>
         </nav>
