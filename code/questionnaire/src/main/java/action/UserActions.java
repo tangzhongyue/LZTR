@@ -22,7 +22,7 @@ public class UserActions extends BaseAction{
 	private String mobile;
 	private String qq;
 	private String wechat;
-	
+	private String job;
 	private String role; //admin or user(it means common user)
 	
 	private UserService userService;
@@ -122,6 +122,14 @@ public class UserActions extends BaseAction{
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
+	public String getJob() {
+		return job;
+	}
+
+	public void setJob(String job) {
+		this.job = job;
+	}
 
 	public void setUserService(UserService userService) {
 		this.userService = userService;
@@ -134,10 +142,10 @@ public class UserActions extends BaseAction{
 		}
 		if(role==null) role = "user";
 		User user = new User(username, password, age, sex, email, country,
-				city, mobile, qq, wechat, role);
+				city, mobile, qq, wechat, role, job);
 		userService.addUser(user);
 		response().getWriter().print("success");
-		return null;
+		return SUCCESS;
 	}
 	
 	public String update() throws Exception {
@@ -147,25 +155,26 @@ public class UserActions extends BaseAction{
 		user.setCountry(country);
 		user.setEmail(email);
 		user.setMobile(mobile);
-		user.setPassword(password);
 		user.setQq(qq);
 		user.setRole(role);
 		user.setSex(sex);
 		user.setUsername(username);
 		user.setWechat(wechat);
+		user.setJob(job);
 		userService.updateUser(user);
-		return "updateUser";
+		return SUCCESS;
 	}
 	
 	public String delete() throws Exception {
 		User user = userService.getUserById(id);
 		userService.deleteUser(user);
-		return "deleteUser";
+		return SUCCESS;
 	}
 	
 	public String all() throws Exception {
 		List<User> users = userService.getAllUsers();
-		request().setAttribute("users", users);
-		return "allUser";
+		request().setAttribute("Users", users);
+		return SUCCESS;
 	}
+
 }

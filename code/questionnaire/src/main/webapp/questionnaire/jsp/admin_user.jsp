@@ -1,5 +1,5 @@
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="model.Questionnaire"%>
+<%@ page import="model.User"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,11 +19,10 @@
 
 <body>
 	<%
-		ArrayList<Questionnaire> quesList = new ArrayList<Questionnaire>();
-	/*where is the questionnaires from??? */
-			if (request.getAttribute("Questionnaires") != null) {
-		quesList = (ArrayList<Questionnaire>) request.getAttribute("Questionnaires");
-			}
+		ArrayList<User> userList = new ArrayList<User>();
+		if (request.getAttribute("Users") != null) {
+			userList = (ArrayList<User>) request.getAttribute("Users");
+		}
 	%>
 	<div id="wrapper">
 		<!-- Navigation -->
@@ -37,10 +36,9 @@
 		<div class="navbar-default sidebar" role="navigation">
 			<div class="sidebar-nav navbar-collapse">
 				<ul class="nav" id="side-menu">
-				<!-- href ??? -->
-					<li><a href="allUser"><i class="fa fa-user fa-fw"></i>
-							用户管理</a></li>
-					<li><a href="#" class="active"><i
+					<li><a href="#" class="active"><i 
+							class="fa fa-user fa-fw"></i> 用户管理</a></li>
+					<li><a href="allQuestionnaire"><i
 							class="fa fa-book fa-fw"></i> 问卷管理</a></li>
 					<li><a href="FrontPage"><i 
 							class="fa fa-university fa-fw"></i> 首页</a></li>
@@ -50,13 +48,12 @@
 			</div>
 			<!-- /.sidebar-collapse -->
 		</div>
-		<!-- /.navbar-static-side -->
-		</nav>
+		<!-- /.navbar-static-side --> </nav>
 
 		<div id="page-wrapper">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">问卷</h1>
+					<h1 class="page-header">用户</h1>
 				</div>
 			</div>
 			<!-- /.row -->
@@ -71,43 +68,57 @@
 									<thead>
 										<tr>
 										    <th>ID</th>
-											<th>User ID</th>
-											<th>Title</th>
-											<th>IsPublic</th>
-											<th>Release Time</th>
-											<th>End Time</th>
-											<th>Status</th>
+											<th>User Name</th>
+											<th>Age</th>
+											<th>Sex</th>
+											<th>Job</th>
+											<th>City</th>
+											<th>Country</th>
+											<th>Email</th>
+											<th>Mobile</th>
+											<th>QQ</th>
+											<th>Wechat</th>
+											<th>Role</th>
 											<th>Operation</th>
 										</tr>
 									</thead>
 									<tbody>
 										<%
-											for (int i = 0; i < quesList.size(); i++) {
-																				Questionnaire ques = quesList.get(i);
+											for (int i = 0; i < userList.size(); i++) {
+																				User user = userList.get(i);
 										%>
 										<tr>
-										    <td><%=ques.getId()%></td>
-											<td><%=ques.getUserid()%></td>
-											<td><%=ques.getTitle()%></td>
-											<td><%=ques.getIsPublic()%></td>
-											<td><%=ques.getReleaseTime()%></td>
-											<td><%=ques.getEndTime()%></td>
-											<td><%=ques.getStatus()%></td>
+										    <td><%=user.getId()%></td>
+											<td><%=user.getUsername()%></td>
+											<td><%=user.getAge()%></td>
+											<td><%=user.getSex()%></td>
+											<td><%=user.getJob()%></td>
+											<td><%=user.getCity()%></td>
+											<td><%=user.getCountry()%></td>
+											<td><%=user.getEmail()%></td>
+											<td><%=user.getMobile()%></td>
+											<td><%=user.getQq()%></td>
+											<td><%=user.getWechat()%></td>
+											<td><%=user.getRole()%></td>
 											
 											<td>
-												<!-- data-id what are they？ -->
 												<button class="btn btn-default delete" type="button"
-													data-id="<%=ques.getId()%>">
+													data-id="<%=user.getId()%>">
 													<i class="fa fa-trash"></i>
 												</button>
 												<button class="btn btn-default edit" type="button"
-													data-id="<%=ques.getId()%>"
-													data-title="<%=ques.getTitle()%>"
-													data-userid="<%=ques.getUserid()%>"
-													data-isPublic="<%=ques.getIsPublic()%>"
-													data-releaseTime="<%=ques.getReleaseTime()%>"
-													data-endTime="<%=ques.getEndTime()%>"
-													data-status="<%=ques.getStatus()%>"
+													data-id="<%=user.getId()%>"
+													data-username="<%=user.getUsername()%>"
+													data-age="<%=user.getAge()%>"
+													data-sex="<%=user.getSex()%>"
+													data-job="<%=user.getJob()%>"
+													data-city="<%=user.getCity()%>"
+													data-country="<%=user.getCountry()%>"
+													data-email="<%=user.getEmail()%>"
+													data-mobile="<%=user.getMobile()%>"
+													data-qq="<%=user.getQq()%>"
+													data-wechat="<%=user.getWechat()%>"
+													data-role="<%=user.getRole()%>"
 													>
 													<i class="fa fa-edit"></i>
 												</button>
@@ -147,17 +158,52 @@
 						<div class="col-lg-12">
 							<form role="form">
 								<div class="form-group">
-									<label>Status 说明：</label>
-									<p>unp ： 未发布；  pub ： 已发布</p>
-									<p>end ： 已结束；  ban ： 禁用</p>
-									<select class="form-control" id="selectf" name = "status">
-										<option>unp</option>
-										<option>pub</option>
-										<option>end</option>
-										<option>ban</option>
-									</select>
+									<label>ID</label> <input class="form-control" name="id" readonly=true>
 								</div>
-							</form>
+								<div class="form-group">
+									<label>Username</label> <input class="form-control" name="username">
+								</div>
+								<div class="form-group">
+									<label>Age</label> <input class="form-control" name="age">
+								</div>
+								<div class="form-group">
+									<label>Sex</label> <input class="form-control" name="sex">
+								</div>
+								<div class="form-group">
+									<label>Job</label>
+									<select class="form-control" name = "job">
+											<option>teacher</option>
+											<option>student</option>
+											<option>IT</option>
+										</select>
+								</div>
+								<div class="form-group">
+									<label>City</label> <input class="form-control" name="city">
+								</div>
+								<div class="form-group">
+									<label>Country</label> <input class="form-control" name="country">
+								</div>
+								<div class="form-group">
+									<label>Email</label> <input class="form-control" name="email">
+								</div>
+								<div class="form-group">
+									<label>Mobile</label> <input class="form-control" name="mobile">
+								</div>
+								<div class="form-group">
+									<label>QQ</label> <input class="form-control" name="qq">
+								</div>
+								<div class="form-group">
+									<label>WeChat</label> <input class="form-control" name="wechat">
+								</div>
+								
+								<div class="form-group">
+									<label>Role</label> 
+										<select class="form-control" name = "role">
+											<option>admin</option>
+											<option>user</option>
+										</select>
+								</div>
+	  						</form>
 						</div>
 					</div>
 				</div>
@@ -176,8 +222,7 @@
 	<script src="<%=path%>/questionnaire/js/bootbox.min.js"></script>
 	<script src="<%=path%>/questionnaire/js/questionnaire.js"></script>
 
-	<script src="<%=path%>/questionnaire/js/admin_ques.js"></script>
-	
+	<script src="<%=path%>/questionnaire/js/admin_user.js"></script>
 
 	<script>
 		$(document).ready(function() {
@@ -190,3 +235,4 @@
 </body>
 
 </html>
+

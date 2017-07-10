@@ -9,6 +9,7 @@
 	<package name="process" extends="struts-default">
 	<!-- User -->
 		<action name="*User" class="action.UserActions" method="{1}">
+			<result name="success">/questionnaire/jsp/admin_user.jsp</result>
 		</action>
 		
 		<action name="*Questionnaire" class="action.QuestionnaireActions" method="{1}">
