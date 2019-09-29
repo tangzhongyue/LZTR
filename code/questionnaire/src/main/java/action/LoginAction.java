@@ -1,8 +1,6 @@
 package action;
-
 import model.User;
 import service.LoginService;
-
 public class LoginAction extends BaseAction{
 	/**
 	 * 
@@ -27,9 +25,14 @@ public class LoginAction extends BaseAction{
 		this.password = password;
 	}
 	public String login(){
-		User user = loginService.login(username,  password);
+		User user = loginService.login(username, password);
 		if(user != null) {
+			if(user.getStatus()==0){
+				request().setAttribute("flag", "1");
+				return INPUT;
+			}
 			session().setAttribute("user", user);
+			session().setAttribute("role",user.getRole());
 			return SUCCESS;
 		}
 		else{
@@ -37,10 +40,9 @@ public class LoginAction extends BaseAction{
 			return INPUT;
 		}
 	}
-	
 	public String logout(){
 		session().removeAttribute("user");
+		session().removeAttribute("role");
 		return SUCCESS;
 	}
-	
 }

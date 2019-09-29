@@ -1,31 +1,22 @@
 package dao.impl;
-
 import java.util.List;
-
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
-
 import dao.QuestionnaireQuestionsDao;
-
 import model.QuestionnaireQuestions;
-
 public class QuestionnaireQuestionsDaoImpl implements QuestionnaireQuestionsDao{
 	MongoTemplate mongoTemplate;
-
 	public void setMongoTemplate(MongoTemplate mongoTemplate) {
 		this.mongoTemplate = mongoTemplate;
 	}
-	
 	public void addQuestionnaire(QuestionnaireQuestions ques){
 		mongoTemplate.save(ques);
 	}
-	
 	public void deleteQuestionnaire(QuestionnaireQuestions ques){
 		mongoTemplate.remove(ques);
 	}
-	
 	public void updateQuestionnaire(QuestionnaireQuestions ques){
 		Criteria criteria = Criteria.where("quesid").is(ques.getQuesid());
 	      Query query = new Query(criteria);
@@ -33,7 +24,6 @@ public class QuestionnaireQuestionsDaoImpl implements QuestionnaireQuestionsDao{
 	      update.set("content",ques.getContent());
 	      mongoTemplate.updateFirst(query, update, QuestionnaireQuestions.class);
 	}
-	
 	public QuestionnaireQuestions getQuestionnaireById(int id){
 		Criteria criteria = Criteria.where("quesid").is(id);
 	      Query query = new Query(criteria);
@@ -43,5 +33,14 @@ public class QuestionnaireQuestionsDaoImpl implements QuestionnaireQuestionsDao{
 		  }
 	      else {
 	    	  return null;}
+	}
+	
+	public void copyQuestionnaireContent(int content_id, int new_id) {
+		QuestionnaireQuestions old_ques = getQuestionnaireById(content_id);
+		QuestionnaireQuestions new_ques = new QuestionnaireQuestions();
+		new_ques.setQuesid(new_id);
+		new_ques.setContent(old_ques.getContent());
+		addQuestionnaire(new_ques);
+		return;
 	}
 }

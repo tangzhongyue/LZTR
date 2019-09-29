@@ -196,8 +196,14 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
-
-
+<!-- https://mvnrepository.com/artifact/jfree/jfreechart -->
+<!-- for drawing pictures -->
+<dependency>
+    <groupId>jfree</groupId>
+    <artifactId>jfreechart</artifactId>
+    <version>1.0.13</version>
+</dependency>
+		
 
 		<!-- Struts2 -->
 		<dependency>
@@ -243,6 +249,37 @@
 			<version>${javax.servlet-api.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<!--  Email activate -->
+		<dependency>
+    <groupId>javax.mail</groupId>
+    <artifactId>javax.mail-api</artifactId>
+    <version>1.5.3</version>
+	</dependency>
+	<dependency>
+    <groupId>com.sun.mail</groupId>
+    <artifactId>javax.mail</artifactId>
+    <version>1.5.3</version>
+	</dependency>
+	
+	
+	<!--  chart  -->
+	<dependency>
+    <groupId>org.jfree</groupId>
+    <artifactId>jcommon</artifactId>
+    <version>1.0.23</version>
+</dependency>
+<dependency>
+    <groupId>org.jfree</groupId>
+    <artifactId>jfreechart</artifactId>
+    <version>1.0.19</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/net.sf.jacob-project/jacob -->
+<dependency>
+    <groupId>net.sf.jacob-project</groupId>
+    <artifactId>jacob</artifactId>
+    <version>1.14.3</version>
+</dependency>
 
 	</dependencies>
 	<build>

@@ -11,7 +11,7 @@ public interface QuestionnaireService {
 	 * @param questions
 	 * @param ques
 	 */
-	void addQuestionnaire(QuestionnaireQuestions questions, Questionnaire ques);
+	int addQuestionnaire(QuestionnaireQuestions questions, Questionnaire ques);
 
 	/**
 	 * Update a questionnaire,including its basic information and content
@@ -19,6 +19,8 @@ public interface QuestionnaireService {
 	 * @param ques
 	 */
 	void updateQuestionnaire(QuestionnaireQuestions questions, Questionnaire ques);
+	
+	void updateQuestionnaire(Questionnaire ques);
 
 	/**
 	 * Delete a questionnaire,including its basic information and content
@@ -27,6 +29,7 @@ public interface QuestionnaireService {
 	 */
 	void deleteQuestionnaire(QuestionnaireQuestions questions, Questionnaire ques);
 
+	void copyQuestionnaire(int id);
 	/**
 	 * Get content of a questionnaire by its id
 	 * @param id
@@ -52,7 +55,7 @@ public interface QuestionnaireService {
 	 * @param userid
 	 * @return
 	 */
-	List<Questionnaire> getQuestionnairesByUserid(int userid);
+	List<Questionnaire> getQuestionnaireByUserId(int userid);
 
 	/**
 	 * Find questionnaires with a given keyword
@@ -60,6 +63,13 @@ public interface QuestionnaireService {
 	 * @return
 	 */
 	List<Questionnaire> findQuestionnaires(String condi);
+	
+	List<Questionnaire> getPublicQuestionnaires();
+	
+	List<Questionnaire> getPublicResults();
 
+	List<Questionnaire> getTemplateQuestionnaires();
+	
+	Questionnaire copyTemplate(int quesid, int userid);
 }
 

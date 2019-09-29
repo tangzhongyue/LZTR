@@ -1,16 +1,9 @@
 package dao.impl;
-
 import java.util.List;
-
-
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-
 import dao.UserDao;
-import model.Questionnaire;
 import model.User;
-
 public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
-
 	/* (non-Javadoc)
 	 * @see dao.impl.UserDao#addUser(model.User)
 	 */
@@ -18,7 +11,6 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	public Integer addUser(User user) {
 		return (Integer) getHibernateTemplate().save(user);
 	}
-
 	/* (non-Javadoc)
 	 * @see dao.impl.UserDao#deleteUser(model.User)
 	 */
@@ -26,7 +18,6 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	public void deleteUser(User user) {
 		getHibernateTemplate().delete(user);
 	}
-
 	/* (non-Javadoc)
 	 * @see dao.impl.UserDao#updateUser(model.User)
 	 */
@@ -34,7 +25,6 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	public void updateUser(User user) {
 		getHibernateTemplate().merge(user);
 	}
-
 	/* (non-Javadoc)
 	 * @see dao.impl.UserDao#getUserById(int)
 	 */
@@ -46,7 +36,6 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		User user = users.size() > 0 ? users.get(0) : null;
 		return user;
 	}
-
 	/* (non-Javadoc)
 	 * @see dao.impl.UserDao#getAllUsers()
 	 */
@@ -57,7 +46,6 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 				.find("from User");
 		return users;
 	}
-
 	/* (non-Javadoc)
 	 * @see dao.impl.UserDao#getUserByUsername(java.lang.String)
 	 */
@@ -79,5 +67,13 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		List<User> users  = (List<User>) getHibernateTemplate()
 				.find("from User as u where u.username LIKE ?",'%'+condi+'%');
 		return users;
+	}
+	@Override
+	public User getUserByEmail(String email){
+		@SuppressWarnings("unchecked")
+		List<User> users  = (List<User>) getHibernateTemplate()
+				.find("from User as u where u.email = ?",email);
+		User user = users.size() > 0 ? users.get(0) : null;
+		return user;
 	}
 }
